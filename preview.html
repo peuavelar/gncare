@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GN Care | Fisioterapia que continua com você</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#1568b8;
+  --green-deep:#0b2f52;
+  --ink:#14324a;
+  --muted:#4a6274;
+  --lime:#d4ebfb;
+  --mint:#e7f3fb;
+  --cream:#eef4fa;
+  --line:#dce6ef;
+  --white:#fff;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Plus Jakarta Sans",Segoe UI,sans-serif;color:var(--ink);background:#fff}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button,input{font:inherit}
+
+.util{background:var(--green-deep);color:#fff;display:flex;justify-content:flex-end;gap:18px;align-items:center;padding:7px 6%;font-size:13px;font-weight:600}
+.util a:hover{text-decoration:underline}
+.lang{border:1px solid #ffffff55;border-radius:999px;padding:4px 10px;font-size:12px}
+.announce{background:var(--lime);text-align:center;padding:8px 16px;font-size:13px;font-weight:650;color:#0e3358}
+.announce b{font-weight:800}
+nav{background:#fff;display:flex;align-items:center;justify-content:space-between;padding:10px 22px;gap:20px;position:sticky;top:0;z-index:20}
+.brand{display:flex;align-items:center;gap:8px;font-weight:800;font-size:20px;color:var(--green);letter-spacing:-.03em}
+.brand svg{display:block;width:24px;height:24px}
+.menu{display:flex;gap:22px;font-weight:650;font-size:14px;color:var(--green-deep)}
+.menu a:hover{color:var(--green)}
+.burger{display:none;border:0;background:none;font-size:24px;cursor:pointer;color:var(--green-deep)}
+
+.hero{position:relative;min-height:0;color:#fff;display:flex;align-items:center;overflow:hidden;background:#0c2238 center 32%/cover no-repeat;background-image:linear-gradient(90deg,rgba(8,22,40,.78) 0%,rgba(8,22,40,.4) 48%,rgba(8,22,40,.16) 100%),url("assets/gn-hero.png")}
+.hero-inner{position:relative;z-index:2;width:min(1180px,100%);margin:0 auto;padding:28px 6% 32px}
+.track{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;display:none}
+.frame.show-track .track{display:block}
+.track circle{fill:#3d8fd4;stroke:#0b2f52;stroke-width:.6;animation:pulse 1.3s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.35}}
+.track polyline{fill:none;stroke:#fff;stroke-width:.35;stroke-dasharray:1.2 1.1;opacity:.9}
+.rep{position:absolute;right:16px;top:16px;background:#111;color:#fff;border-radius:999px;padding:8px 12px;font-weight:800;font-size:14px}
+.pip{position:absolute;right:14px;bottom:14px;width:92px;height:132px;border-radius:14px;overflow:hidden;border:2px solid #fff;box-shadow:0 8px 20px #0006;background:#111}
+.pip video{width:100%;height:100%;object-fit:cover}
+.hero h1{font-size:clamp(32px,3.5vw,46px);line-height:1.04;letter-spacing:-.04em;margin:0 0 10px;font-weight:800;max-width:520px}
+.hero p{font-size:15px;line-height:1.45;max-width:440px;margin:0 0 16px;font-weight:500}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:11px 18px;font-weight:750;font-size:14px;border:1.5px solid transparent;cursor:pointer}
+.btn.solid{background:var(--green);color:#fff}
+.btn.solid:hover{background:#0f5698}
+.btn.ghost{background:transparent;color:#fff;border-color:#fff}
+.btn.ghost:hover{background:#ffffff18}
+.btn.solid.dark{color:#fff}
+.btn.line{background:#fff;color:var(--green);border-color:var(--green)}
+.btn.line:hover{background:var(--mint)}
+
+.section{padding:52px 6%}
+.wrap{width:min(1120px,100%);margin:0 auto}
+.center{text-align:center}
+h2{font-size:clamp(28px,3.2vw,40px);letter-spacing:-.035em;line-height:1.08;margin:0 0 8px;color:var(--green-deep);font-weight:800}
+.lead{font-size:16px;color:var(--muted);margin:0 auto 28px;max-width:640px;line-height:1.45}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.checks{display:grid;gap:14px;margin:4px 0 20px}
+.check{display:grid;grid-template-columns:26px 1fr;gap:10px}
+.check i{width:22px;height:22px;border:2px solid var(--green);border-radius:50%;display:grid;place-items:center;color:var(--green);font-style:normal;font-weight:800;margin-top:2px;font-size:12px}
+.check b{display:block;font-size:16px;margin-bottom:2px}
+.check span{color:var(--muted);line-height:1.4;font-size:14px}
+
+.stage{position:relative}
+.vitrine{position:relative;border-radius:22px;overflow:hidden;background:#e7eef5;aspect-ratio:16/11;box-shadow:0 14px 32px #0b2f5214}
+.scene{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s ease}
+.scene.on{opacity:1}
+.call{position:absolute;top:12px;left:12px;bottom:46px;width:30%;max-width:168px;background:#f4f8fc;border-radius:14px;display:none;flex-direction:column;align-items:center;justify-content:flex-end;padding:12px 10px 12px;box-shadow:0 10px 24px #00000022}
+.vitrine.show-call .call{display:flex}
+.call-avatar{width:52px;height:52px;border-radius:50%;background:#1568b8;color:#fff;display:grid;place-items:center;font-weight:800;font-size:18px;margin-bottom:auto;margin-top:12px}
+.call b{color:#14324a;font-size:13px}
+.call span{color:#5a7080;font-size:11px;margin-top:2px}
+.call-controls{display:flex;gap:6px;margin-top:10px}
+.call-controls i{width:28px;height:28px;border-radius:50%;background:#fff;display:grid;place-items:center;font-style:normal;font-size:12px}
+.call-controls i.end{background:#e25b4a;color:#fff}
+.vitrine-ui{position:absolute;left:0;right:0;bottom:0;padding:14px 16px 12px;background:linear-gradient(transparent,#00000055);display:flex;align-items:center;justify-content:space-between;gap:12px}
+.vitrine-caption{margin:0;color:#fff;font-weight:750;font-size:14px}
+.dots{display:flex;gap:7px}
+.dots button{width:8px;height:8px;border-radius:50%;border:0;background:#ffffffaa;cursor:pointer;padding:0}
+.dots button.on{background:#fff;width:22px;border-radius:99px}
+.shot video{display:none}
+
+.band{background:#070707;color:#fff;padding:56px 0 28px;overflow:hidden}
+.band h2{color:#4f97d6;text-align:center;margin-bottom:24px}
+.rail{display:grid;grid-template-columns:1.15fr .85fr;gap:14px;width:min(1180px,92%);margin:0 auto}
+.tile{border-radius:22px;padding:22px;min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:center}
+.tile.mint{background:var(--mint);color:var(--ink)}
+.tile.cream{background:var(--cream);color:var(--ink)}
+.tile h3{font-size:24px;letter-spacing:-.03em;margin:0 0 8px;line-height:1.08}
+.tile p{margin:0 0 12px;line-height:1.45;color:#3d5568;font-size:15px}
+.more{color:var(--green);font-weight:800;font-size:14px}
+.shot{border-radius:14px;overflow:hidden;position:relative;min-height:168px}
+.shot img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.mini{position:absolute;left:10px;right:10px;bottom:10px;background:#fff;border-radius:12px;padding:8px 10px;font-size:12px}
+.mini div{display:flex;justify-content:space-between;padding:5px 0;border-top:1px solid #eef2ef}
+.mini div:first-child{border:0;font-weight:800}
+
+.pros{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;text-align:left;margin-top:4px}
+.pros article{padding:4px 4px 0}
+.mark{width:36px;height:36px;border-radius:10px;background:var(--mint);color:var(--green);display:grid;place-items:center;font-weight:800;margin-bottom:10px;font-size:13px}
+.pros h3{margin:0 0 6px;font-size:18px;letter-spacing:-.03em}
+.pros p{margin:0;color:var(--muted);line-height:1.45;font-size:14px}
+
+.plans{background:#f4f8fc}
+.plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.plan{background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px 22px;display:flex;flex-direction:column;gap:6px}
+.plan.featured{background:var(--green-deep);color:#fff;border-color:var(--green-deep)}
+.plan .tag{font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--green)}
+.plan.featured .tag{color:var(--lime)}
+.plan h3{margin:0;font-size:22px;letter-spacing:-.03em}
+.plan .price{font-size:28px;font-weight:800;letter-spacing:-.04em}
+.plan .price small{font-size:14px;font-weight:600;opacity:.7}
+.plan ul{list-style:none;padding:6px 0 10px;margin:0;line-height:1.55;color:var(--muted);font-size:14px}
+.plan.featured ul{color:#d5e6f5}
+.plan .btn{justify-content:center;margin-top:auto}
+
+.cta{background:var(--mint);text-align:center;padding:52px 6%}
+.cta h2{max-width:720px;margin:0 auto 16px}
+.cta .actions{justify-content:center}
+
+.certs{background:var(--mint);padding:2px 0 0;margin-bottom:-22px;position:relative;z-index:3}
+.certs-mask{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.certs-track{display:flex;gap:12px;width:max-content;padding:10px 6% 0;animation:certs-roll 32s linear infinite}
+.certs-track:hover{animation-play-state:paused}
+@keyframes certs-roll{to{transform:translateX(-50%)}}
+.cert{width:248px;flex:0 0 auto;background:#fff;border:1px solid var(--line);border-radius:16px;padding:10px 12px;display:flex;align-items:center;gap:10px;box-shadow:0 10px 24px #0b2f5218}
+.seal{width:44px;height:44px;flex:0 0 auto}
+.cert b{display:block;font-size:12px;letter-spacing:-.02em;color:var(--green-deep);line-height:1.2}
+.cert span{display:block;font-size:11px;color:var(--muted);line-height:1.3;margin-top:2px}
+
+footer{background:var(--green-deep);color:#d5e6f5;padding:42px 6% 14px;position:relative}
+.foot{width:min(1120px,100%);margin:0 auto;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+footer .place-name{font-size:18px;font-weight:800;color:#fff;letter-spacing:-.03em;margin:0 0 6px}
+footer p{margin:0;line-height:1.4;font-size:13px}
+.stars{display:flex;align-items:center;gap:8px;margin:0 0 6px;flex-wrap:wrap}
+.star-row{color:#ffc857;letter-spacing:2px;font-size:15px;line-height:1}
+.stars b{color:#ffc857;font-size:14px;font-weight:800}
+.stars em{font-style:normal;font-size:12px;color:#9fd0f5}
+.place{text-align:right}
+.place a{display:inline-flex;margin-top:6px;font-size:13px;font-weight:700;color:#9fd0f5}
+.place a:hover{color:#fff}
+.legal{width:min(1120px,100%);margin:12px auto 0;border-top:1px solid #ffffff22;padding-top:8px;font-size:11px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+.screen-loader{position:fixed;inset:0;z-index:80;display:none;align-items:center;justify-content:center;background:#0b2f52c7;backdrop-filter:blur(8px)}
+.screen-loader.on{display:flex}
+.screen-loader-card{background:#fff;border-radius:16px;padding:16px 18px;text-align:center;width:min(196px,86vw);box-shadow:0 16px 40px #071e3666}
+.screen-loader-brand{display:flex;align-items:center;justify-content:center;gap:6px;font-weight:800;font-size:14px;color:#1568b8;letter-spacing:-.03em}
+.screen-loader-brand svg{width:16px;height:16px}
+.screen-loader-spin{width:22px;height:22px;margin:12px auto 8px;border:2.5px solid #d4ebfb;border-top-color:#1568b8;border-radius:50%;animation:screen-spin .7s linear infinite}
+.screen-loader-card p{margin:0;color:#4a6274;font-size:12px;font-weight:650}
+@keyframes screen-spin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.screen-loader-spin{animation:none;border-top-color:#d4ebfb;background:#1568b8}}
+
+@media(prefers-reduced-motion:reduce){
+  .certs-track{animation:none;flex-wrap:wrap;width:min(1120px,100%);margin:0 auto;justify-content:center}
+}
+
+@media(max-width:900px){
+  .menu{display:none;position:absolute;top:52px;left:0;right:0;background:#fff;flex-direction:column;padding:14px 6% 18px;border-bottom:1px solid var(--line)}
+  .menu.open{display:flex}
+  .burger{display:block}
+  nav{position:sticky}
+  .split,.rail,.plan-grid,.pros{grid-template-columns:1fr}
+  .place{text-align:left}
+  .tile{grid-template-columns:1fr}
+  .hero{min-height:0}
+  .hero-inner{padding:24px 6% 28px}
+  .section{padding:40px 6%}
+  .vitrine{aspect-ratio:4/3}
+  .float-card,.pip{display:none}
+  .util .hide{display:none}
+}
+</style>
+</head>
+<body>
+<div class="util">
+  <a href="app/#/login">Entrar</a>
+  <a href="app/#/cadastro?perfil=fisioterapeuta">Sou fisioterapeuta</a>
+  <a class="hide" href="#suporte">Suporte</a>
+  <span class="lang">Português (Brasil)</span>
+</div>
+<div class="announce"><b>Novo:</b> planos com teleatendimento e atendimento presencial na GN Fisioterapia.</div>
+<nav>
+  <a class="brand" href="#topo" aria-label="GN Care">
+    <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+      <path d="M16 3c2 5 2 8 0 12 4-2 8-2 12 0-4 2-6 6-6 11-2-5-6-8-12-8 4-3 6-8 6-15Z" fill="#1568b8"/>
+    </svg>
+    GN Care
+  </a>
+  <button class="burger" aria-label="Abrir menu" onclick="document.getElementById('menu').classList.toggle('open')">☰</button>
+  <div class="menu" id="menu">
+    <a href="#pacientes" onclick="document.getElementById('menu').classList.remove('open')">Para pacientes</a>
+    <a href="#profissionais">Para fisioterapeutas</a>
+    <a href="#cuidado">Como funciona</a>
+    <a href="#planos">Planos</a>
+    <a href="#clinica">A clínica</a>
+  </div>
+</nav>
+
+<header class="hero" id="topo">
+  <div class="hero-inner">
+    <h1>Movimento para cada corpo</h1>
+    <p>Volte ao que você gosta de fazer com teleatendimento, um fisioterapeuta dedicado e um programa que continua depois da consulta.</p>
+    <div class="actions">
+      <a class="btn solid" href="#planos">Ver os planos <span aria-hidden="true">→</span></a>
+      <a class="btn ghost" href="#profissionais">Sou fisioterapeuta <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</header>
+
+<section class="section" id="pacientes">
+  <div class="wrap split">
+    <div>
+      <h2>Menos dor, mais vida</h2>
+      <p class="lead" style="margin-left:0">Fisioterapia para continuar o movimento em casa, no seu ritmo.</p>
+      <div class="checks">
+        <div class="check"><i>✓</i><div><b>Teleconsulta em casa</b><span>O atendimento acontece na sala do GN Care, sem deslocamento para cada acompanhamento.</span></div></div>
+        <div class="check"><i>✓</i><div><b>Exercício na cadeira</b><span>Séries curtas, sentado, com a orientação do fisioterapeuta.</span></div></div>
+        <div class="check"><i>✓</i><div><b>Equilíbrio com apoio</b><span>Movimentos leves usando a cadeira como suporte, no programa do paciente.</span></div></div>
+      </div>
+      <a class="btn solid" href="#planos">Ver os planos <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="stage">
+      <div class="vitrine show-call" id="vitrine">
+        <img class="scene on" src="assets/idoso-tele.png" alt="Paciente em teleconsulta em casa">
+        <img class="scene" src="assets/idoso-exercicio.png" alt="Paciente fazendo exercício sentado">
+        <img class="scene" src="assets/idoso-equilibrio.png" alt="Paciente fazendo exercício de equilíbrio com apoio da cadeira">
+        <aside class="call">
+          <div class="call-avatar">JS</div>
+          <b>João Silva</b>
+          <span>Fisioterapeuta</span>
+          <div class="call-controls" aria-hidden="true"><i></i><i></i><i class="end"></i></div>
+        </aside>
+        <div class="vitrine-ui">
+          <p class="vitrine-caption" id="vitrineCaption">Teleconsulta em casa</p>
+          <div class="dots" role="tablist">
+            <button class="on" aria-label="Teleconsulta" onclick="showScene(0,this)"></button>
+            <button aria-label="Exercício na cadeira" onclick="showScene(1,this)"></button>
+            <button aria-label="Equilíbrio" onclick="showScene(2,this)"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="cuidado">
+  <h2>Cuidado feito para o seu caso</h2>
+  <div class="rail">
+    <article class="tile mint">
+      <div>
+        <h3>Programa feito para você</h3>
+        <p>Exercícios definidos pelo fisioterapeuta e ajustados conforme a dor e a função mudam.</p>
+        <a class="more" href="#planos">Conhecer os planos →</a>
+      </div>
+      <div class="shot">
+        <img src="assets/idoso-exercicio.png" alt="Exercício sentado em casa">
+        <div class="mini">
+          <div><span>Afundo lateral</span><span>Mobilidade</span></div>
+          <div><span>Agachamento</span><span>Força</span></div>
+          <div><span>Ponte de quadril</span><span>Controle</span></div>
+        </div>
+      </div>
+    </article>
+    <article class="tile cream">
+      <div>
+        <h3>Teleatendimento em casa</h3>
+        <p>A consulta acontece na sala virtual do GN Care. Nos planos Ouro e Platinum, o cuidado também inclui sessões presenciais na GN Fisioterapia.</p>
+        <a class="more" href="app/#/login">Entrar na área do paciente →</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="profissionais">
+  <div class="wrap center">
+    <h2>O consultório digital do fisioterapeuta</h2>
+    <p class="lead">Sem mensalidade. Pacientes, agenda, exercícios e evolução no mesmo lugar.</p>
+    <div class="pros">
+      <article><div class="mark">01</div><h3>Sem custo fixo</h3><p>O profissional entra na estrutura digital do GN Care sem mensalidade para começar.</p></article>
+      <article><div class="mark">02</div><h3>Perfil para ser encontrado</h3><p>Especialidades, horários e modalidade ficam visíveis para quem procura atendimento.</p></article>
+      <article><div class="mark">03</div><h3>O dia inteiro num painel</h3><p>Agenda, sala virtual, prescrição e registro de evolução sem trocar de ferramenta.</p></article>
+    </div>
+    <div class="actions" style="justify-content:center;margin-top:36px">
+      <a class="btn solid" href="app/#/cadastro?perfil=fisioterapeuta">Abrir a área profissional <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="section plans" id="planos">
+  <div class="wrap">
+    <div class="center">
+      <h2>Escolha como continuar o tratamento</h2>
+      <p class="lead">Teleatendimento em todos os planos. Presencial na GN Fisioterapia a partir do Ouro.</p>
+    </div>
+    <div class="plan-grid">
+      <article class="plan">
+        <div class="tag">Essencial</div>
+        <h3>Premium</h3>
+        <div class="price">R$ 96,99 <small>/mês</small></div>
+        <ul>
+          <li>4 teleconsultas por mês</li>
+          <li>Programa de exercícios</li>
+          <li>Histórico do tratamento</li>
+          <li>Entrada na sala virtual</li>
+        </ul>
+        <a class="btn line" href="app/#/cadastro">Começar</a>
+      </article>
+      <article class="plan featured">
+        <div class="tag">Mais escolhido</div>
+        <h3>Ouro</h3>
+        <div class="price">R$ 196,99 <small>/mês</small></div>
+        <ul>
+          <li>6 teleconsultas por mês</li>
+          <li>2 atendimentos presenciais</li>
+          <li>Prioridade de agenda</li>
+          <li>Acompanhamento de evolução</li>
+        </ul>
+        <a class="btn solid" href="app/#/cadastro" style="background:#1568b8">Começar</a>
+      </article>
+      <article class="plan">
+        <div class="tag">Completo</div>
+        <h3>Platinum</h3>
+        <div class="price">R$ 296,99 <small>/mês</small></div>
+        <ul>
+          <li>8 teleconsultas por mês</li>
+          <li>3 atendimentos presenciais</li>
+          <li>Reavaliação do programa</li>
+          <li>Acompanhamento completo</li>
+        </ul>
+        <a class="btn line" href="app/#/cadastro">Começar</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>Dê o primeiro passo do seu tratamento</h2>
+  <div class="actions">
+    <a class="btn solid" href="#planos">Ver os planos <span aria-hidden="true">→</span></a>
+    <a class="btn line" href="#profissionais">Sou fisioterapeuta <span aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+<section class="certs" id="clinica" aria-label="Registros da clínica">
+  <div class="certs-mask">
+    <div class="certs-track">
+      <article class="cert"><svg class="seal" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#0b2f52"/><circle cx="22" cy="22" r="16" fill="none" stroke="#9fd0f5" stroke-width="1.2" stroke-dasharray="2 2"/><text x="22" y="20" text-anchor="middle" fill="#fff" font-size="8" font-weight="800" font-family="Plus Jakarta Sans,sans-serif">CRF</text><text x="22" y="29" text-anchor="middle" fill="#9fd0f5" font-size="7" font-weight="700" font-family="Plus Jakarta Sans,sans-serif">ITO-7</text></svg><div><b>CREFITO-7</b><span>Conselho regional · Bahia</span></div></article>
+      <article class="cert"><svg class="seal" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#1568b8"/><path d="M22 8l3.2 6.8 7.3.7-5.5 4.6 1.7 7.1L22 23.8 15.3 27.2l1.7-7.1-5.5-4.6 7.3-.7Z" fill="#ffc857"/><text x="22" y="36" text-anchor="middle" fill="#fff" font-size="6" font-weight="800" font-family="Plus Jakarta Sans,sans-serif">COFFITO</text></svg><div><b>COFFITO</b><span>Conselho federal da fisioterapia</span></div></article>
+      <article class="cert"><svg class="seal" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#e7f3fb"/><circle cx="22" cy="22" r="16" fill="none" stroke="#1568b8" stroke-width="2"/><path d="M14 23l5 5 11-12" fill="none" stroke="#1568b8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>Alvará sanitário</b><span>Vigilância em saúde</span></div></article>
+      <article class="cert"><svg class="seal" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#0b2f52"/><rect x="12" y="13" width="20" height="18" rx="3" fill="none" stroke="#9fd0f5" stroke-width="1.6"/><path d="M16 18h12M16 22h12M16 26h8" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/></svg><div><b>CNES</b><span>Estabelecimento de saúde</span></div></article>
+      <article class="cert"><svg class="seal" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#d4ebfb"/><path d="M22 10c4 6 4 9 0 14 5-2 9-2 13 0-5 2-7 7-7 12-2-6-7-9-13-9 4-3 7-9 7-17Z" fill="#1568b8"/></svg><div><b>Ortopedia</b><span>Conduta especializada</span></div></article>
+      <article class="cert"><svg class="seal" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#14324a"/><circle cx="22" cy="16" r="5" fill="#9fd0f5"/><path d="M12 32c2-7 16-7 20 0" fill="none" stroke="#9fd0f5" stroke-width="2.2" stroke-linecap="round"/><circle cx="14" cy="28" r="2" fill="#ffc857"/><circle cx="30" cy="28" r="2" fill="#ffc857"/></svg><div><b>Fisioterapia geriátrica</b><span>Cuidado ao movimento do idoso</span></div></article>
+      <article class="cert" aria-hidden="true"><svg class="seal" viewBox="0 0 44 44"><circle cx="22" cy="22" r="21" fill="#0b2f52"/><circle cx="22" cy="22" r="16" fill="none" stroke="#9fd0f5" stroke-width="1.2" stroke-dasharray="2 2"/><text x="22" y="20" text-anchor="middle" fill="#fff" font-size="8" font-weight="800" font-family="Plus Jakarta Sans,sans-serif">CRF</text><text x="22" y="29" text-anchor="middle" fill="#9fd0f5" font-size="7" font-weight="700" font-family="Plus Jakarta Sans,sans-serif">ITO-7</text></svg><div><b>CREFITO-7</b><span>Conselho regional · Bahia</span></div></article>
+      <article class="cert" aria-hidden="true"><svg class="seal" viewBox="0 0 44 44"><circle cx="22" cy="22" r="21" fill="#1568b8"/><path d="M22 8l3.2 6.8 7.3.7-5.5 4.6 1.7 7.1L22 23.8 15.3 27.2l1.7-7.1-5.5-4.6 7.3-.7Z" fill="#ffc857"/><text x="22" y="36" text-anchor="middle" fill="#fff" font-size="6" font-weight="800" font-family="Plus Jakarta Sans,sans-serif">COFFITO</text></svg><div><b>COFFITO</b><span>Conselho federal da fisioterapia</span></div></article>
+      <article class="cert" aria-hidden="true"><svg class="seal" viewBox="0 0 44 44"><circle cx="22" cy="22" r="21" fill="#e7f3fb"/><circle cx="22" cy="22" r="16" fill="none" stroke="#1568b8" stroke-width="2"/><path d="M14 23l5 5 11-12" fill="none" stroke="#1568b8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>Alvará sanitário</b><span>Vigilância em saúde</span></div></article>
+      <article class="cert" aria-hidden="true"><svg class="seal" viewBox="0 0 44 44"><circle cx="22" cy="22" r="21" fill="#0b2f52"/><rect x="12" y="13" width="20" height="18" rx="3" fill="none" stroke="#9fd0f5" stroke-width="1.6"/><path d="M16 18h12M16 22h12M16 26h8" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/></svg><div><b>CNES</b><span>Estabelecimento de saúde</span></div></article>
+      <article class="cert" aria-hidden="true"><svg class="seal" viewBox="0 0 44 44"><circle cx="22" cy="22" r="21" fill="#d4ebfb"/><path d="M22 10c4 6 4 9 0 14 5-2 9-2 13 0-5 2-7 7-7 12-2-6-7-9-13-9 4-3 7-9 7-17Z" fill="#1568b8"/></svg><div><b>Ortopedia</b><span>Conduta especializada</span></div></article>
+      <article class="cert" aria-hidden="true"><svg class="seal" viewBox="0 0 44 44"><circle cx="22" cy="22" r="21" fill="#14324a"/><circle cx="22" cy="16" r="5" fill="#9fd0f5"/><path d="M12 32c2-7 16-7 20 0" fill="none" stroke="#9fd0f5" stroke-width="2.2" stroke-linecap="round"/><circle cx="14" cy="28" r="2" fill="#ffc857"/><circle cx="30" cy="28" r="2" fill="#ffc857"/></svg><div><b>Fisioterapia geriátrica</b><span>Cuidado ao movimento do idoso</span></div></article>
+    </div>
+  </div>
+</section>
+<footer id="suporte">
+  <div class="foot">
+    <div>
+      <p class="place-name">GN Fisioterapia</p>
+      <div class="stars" aria-label="5,0 de 5 estrelas. 60 avaliações no Google">
+        <span class="star-row" aria-hidden="true">★★★★★</span>
+        <b>5,0</b>
+        <em>60 avaliações no Google</em>
+      </div>
+      <p>Clínica de fisioterapia em Salvador, Bahia</p>
+    </div>
+    <div class="place">
+      <p>Acupe · Av. Dom João VI</p>
+      <p>Salvador · Bahia</p>
+      <a href="https://www.google.com/maps/search/?api=1&query=GN+fisioterapia+Acupe+Salvador" target="_blank" rel="noopener">Como chegar →</a>
+    </div>
+  </div>
+  <div class="legal">
+    <span>GN Care · plataforma da GN Fisioterapia</span>
+    <span>Salvador · BA</span>
+  </div>
+</footer>
+<div id="screen-loader" class="screen-loader" role="alertdialog" aria-live="assertive" aria-busy="true" aria-label="Carregando a tela">
+  <div class="screen-loader-card">
+    <div class="screen-loader-brand">
+      <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 3c2 5 2 8 0 12 4-2 8-2 12 0-4 2-6 6-6 11-2-5-6-8-12-8 4-3 6-8 6-15Z" fill="#1568b8"/></svg>
+      GN Care
+    </div>
+    <div class="screen-loader-spin" aria-hidden="true"></div>
+    <p>Carregando a tela…</p>
+  </div>
+</div>
+<script>
+const scenes=["Teleconsulta em casa","Exercício na cadeira","Equilíbrio com apoio"];
+let sceneIndex=0;
+function showScene(i,btn){
+  sceneIndex=i;
+  document.querySelectorAll("#vitrine .scene").forEach((img,n)=>img.classList.toggle("on",n===i));
+  document.getElementById("vitrine").classList.toggle("show-call",i===0);
+  document.getElementById("vitrineCaption").textContent=scenes[i];
+  document.querySelectorAll("#vitrine .dots button").forEach(b=>b.classList.remove("on"));
+  (btn||document.querySelectorAll("#vitrine .dots button")[i]).classList.add("on");
+}
+setInterval(()=>showScene((sceneIndex+1)%scenes.length),7000);
+
+function showScreenLoader(){
+  const el=document.getElementById("screen-loader");
+  if(el) el.classList.add("on");
+}
+document.addEventListener("click",(e)=>{
+  const a=e.target.closest("a[href]");
+  if(!a||a.target==="_blank"||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey) return;
+  const href=a.getAttribute("href")||"";
+  if(href.startsWith("#")||href.startsWith("http")) return;
+  if(!/app\//.test(href)) return;
+  e.preventDefault();
+  showScreenLoader();
+  try{sessionStorage.setItem("gncare.screenLoader","1")}catch(_){}
+  setTimeout(()=>{location.href=a.href},380);
+});
+</script>
+</body>
+</html>
