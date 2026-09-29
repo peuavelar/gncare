@@ -4,6 +4,6 @@
   "version": "0.1.0",
   "description": "Protótipo front-end do GN Care — fisioterapia com teleatendimento e acompanhamento contínuo.",
   "scripts": {
-    "start": "node server.js"
+    "dev": "node server.js"
   }
 }

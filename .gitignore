@@ -10,3 +10,5 @@ Desktop.ini
 .idea/
 .vscode/
 *.local
+
+.vercel

@@ -21,7 +21,7 @@ O que **não** está neste recorte: autenticação real, banco, pagamentos, sala
 Precisa só do Node.js.
 
 ```bash
-npm start
+npm run dev
 ```
 
 Abre:
@@ -100,6 +100,16 @@ assets/               Imagens da landing e da demonstração
 ## Publicação
 
 O site é estático. A raiz `/` reescreve para `preview.html` (`vercel.json`). Rotas do app usam hash (`/app/#/login`), então não precisam de rewrite extra.
+
+Repositório: [github.com/peuavelar/gncare](https://github.com/peuavelar/gncare)
+
+Para conectar o GitHub ao Vercel (deploy a cada push em `main`):
+
+1. Abra [vercel.com/new/import](https://vercel.com/new/import?s=https://github.com/peuavelar/gncare)
+2. Entre com a conta GitHub `peuavelar`
+3. Importe o repositório **gncare** sem alterar o diretório raiz
+
+O `server.js` é só para desenvolvimento local e não entra no deploy.
 
 ## Próximo passo: backend
 
