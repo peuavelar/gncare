@@ -1,2 +1,4 @@
 server.js
 .vercel
+package.json
+package-lock.json

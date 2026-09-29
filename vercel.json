@@ -1,7 +1,6 @@
 {
   "framework": null,
-  "cleanUrls": true,
-  "rewrites": [
-    { "source": "/", "destination": "/preview.html" }
-  ]
+  "buildCommand": "node -e \"require('fs').copyFileSync('preview.html','index.html')\"",
+  "outputDirectory": ".",
+  "installCommand": ""
 }
